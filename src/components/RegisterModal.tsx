@@ -11,9 +11,28 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1000));
+    try {
+      const res = await fetch("https://formspree.io/Habiboqq3@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          vorname: form.vorname,
+          nachname: form.nachname,
+          email: form.email,
+          handy: form.handy || "–",
+          ausweis: form.ausweis || "–",
+          _subject: `CSC Shuttle Anmeldung: ${form.vorname} ${form.nachname}`,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Fehler beim Senden. Bitte versuche es erneut.");
+      }
+    } catch {
+      alert("Netzwerkfehler. Bitte versuche es erneut.");
+    }
     setLoading(false);
-    setSubmitted(true);
   };
 
   return (
