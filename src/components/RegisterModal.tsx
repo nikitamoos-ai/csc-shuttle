@@ -12,16 +12,18 @@ export default function RegisterModal({ open, onClose }: { open: boolean; onClos
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("https://formspree.io/Habiboqq3@gmail.com", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
+          subject: `CSC Shuttle Anmeldung: ${form.vorname} ${form.nachname}`,
+          from_name: "CSC Shuttle Website",
           vorname: form.vorname,
           nachname: form.nachname,
           email: form.email,
           handy: form.handy || "–",
           ausweis: form.ausweis || "–",
-          _subject: `CSC Shuttle Anmeldung: ${form.vorname} ${form.nachname}`,
         }),
       });
       if (res.ok) {
