@@ -22,7 +22,7 @@ export default function Navbar({ onRegister }: { onRegister: () => void }) {
       transition: "all 0.3s",
       display: "flex", alignItems: "center", justifyContent: "space-between",
     }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
           <path d="M14 2C8.477 2 4 6.477 4 12c0 7 10 16 10 16s10-9 10-16c0-5.523-4.477-10-10-10z" fill="#6dc93c"/>
           <circle cx="14" cy="12" r="4" fill="#0a0a0a"/>
@@ -30,7 +30,7 @@ export default function Navbar({ onRegister }: { onRegister: () => void }) {
         <span style={{ fontFamily: "var(--font-oswald)", fontSize: "1.3rem", fontWeight: 700, letterSpacing: "0.08em", color: "#fff" }}>
           CSC <span style={{ color: "#6dc93c" }}>SHUTTLE</span>
         </span>
-      </div>
+      </a>
 
       {/* Desktop */}
       <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
